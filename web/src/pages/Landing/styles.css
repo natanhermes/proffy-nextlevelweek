@@ -76,6 +76,10 @@
     background: var(--color-secundary-dark);
 }
 
+.buttons-container a img {
+    margin-right: 2.4rem;
+}
+
 .total-connections {
     font-size: 1.4rem;
 
@@ -124,7 +128,7 @@
 
     .buttons-container {
         grid-area: buttons;
-        justify-content: flex-start;
+        justify-self: flex-start;
     }
 
     .buttons-container a {
