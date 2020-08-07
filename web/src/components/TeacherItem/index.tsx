@@ -27,7 +27,7 @@ const TeacherItem: React.FC = () => {
                 <button type="button">
                     <img src={whatsappIcon} alt="Whatsapp" />
                           Entrar em contato
-                      </button>
+                </button>
             </footer>
         </article>
     );

@@ -35,6 +35,9 @@
     font: 1.6rem Archivo;
 }
 
+/* verifica se dentro do input-block tem 1 elemento com focus
+inserir um elemento no final do .input-block qd etiver com focus
+*/
 #search-teachers .input-block:focus-within::after {
     width: calc(100% - 3.2rem);
     height: 2px;
