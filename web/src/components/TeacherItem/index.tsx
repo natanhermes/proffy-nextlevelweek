@@ -1,36 +1,56 @@
 import React from 'react';
 
+import api from '../../services/api';
+
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 
 import './styles.css';
 
-const TeacherItem: React.FC = () => {
+export interface Teacher {
+    id: number;
+    avatar: string;
+    bio: string;
+    cost: number;
+    name: string;
+    subject: string;
+    // user_id: 3
+    whatsapp: string;
+}
+interface TeacherItemProps {
+    teacher: Teacher;
+}
+
+const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
+    function createNewConnection() {
+        api.post('connections', {
+            user_id: teacher.id,
+        });
+    }
     return (
         <article className="teacher-item">
             <header>
-                <img src="https://avatars1.githubusercontent.com/u/12420237?v=4" alt="Natã Hermes" />
+                <img src={teacher.avatar} alt={teacher.name} />
                 <div>
-                    <strong>Natã Hermes</strong>
-                    <span>JavaScript</span>
+                    <strong>{teacher.name}</strong>
+                    <span>{teacher.subject}</span>
                 </div>
             </header>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      <br /><br />
-                      Aperiam facere deleniti eos eligendi ipsum optio sunt, nostrum voluptate cumque maxime impedit sit beatae, voluptas laudantium, reprehenderit corporis minus? Sit, facilis!
-                  </p>
+            <p>{teacher.bio}</p>
             <footer>
                 <p>
                     Preço/hora
-                            <strong>R$ 50,00</strong>
+                    <strong>R$ {teacher.cost}</strong>
                 </p>
-                <button type="button">
+                <a
+                    onClick={createNewConnection}
+                    href={`htps://wa.me/<${teacher.whatsapp}>`}
+                >
                     <img src={whatsappIcon} alt="Whatsapp" />
-                          Entrar em contato
-                </button>
+                    Entrar em contato
+                </a>
             </footer>
         </article>
     );
-}
+};
 
 export default TeacherItem;
